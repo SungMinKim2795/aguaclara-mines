@@ -104,13 +104,13 @@ Image with Height and Width Adjusted:
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it unformatted using the image URL and the relative file path method, then do it again but instead change the height and width of your image:
 
 Using URL
-![My baby](https://github.com/sk2795/images.git)
+![My baby](https://github.com/sk2795/aguaclara-mines/blob/master/IMG_20120928_154613.jpg?raw=true)
 
 Using Relative File Path
-
+![My baby](/images/baby.jpg)
 
 Image with Height and Width Adjusted
-<img src="https://github.com/sk2795/images.gi" height=200 width=100>
+<img src="https://github.com/sk2795/aguaclara-mines/blob/master/IMG_20120928_154613.jpg?raw=true" height=200 width=100>
 
 
 
@@ -288,22 +288,49 @@ $$ D = \frac{k_BT}{6\pi\eta r} $$
 ```python
 import numpy as np
 import math as math
-import aide_design import physchem as pc
 from scipy.constants import Boltzmann as kB_sc # I've imported the unitless value for kB from SciPy
 
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
 
-def Stokes-Einstein(T, r):
-temp=u.Quantity(T,u.degK)
-radius= r*u.m
-nu=pc.viscosity_kinematic(temp)
-D= kB*temp/(6*math.pi*radius*nu)
-print(D)
+def Stokes_Einstein(T, r):
+  temp=T*u.degK
+  radius= r*u.m
+  nu=pc.viscosity_kinematic(temp)
+  D= kB*temp/(6*math.pi*radius*nu)
+  return(D)
+#example
+print(Stokes_Einstein(10,0.01))  
 ```
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save your plot to your images folder in your personal repository, and display it below using `plt.show()` and an image insertion using a relative file path to the image.
 
+#pipe with radius= 0.2m
+#flow= 2m**3/s
+#how Re number changes as viscosity changes due to temperature changes from 0 to 200C
+#create plot of Re Number against Temp (K)
+#title, label x and y and axes grid
+```python
+import numpy as np
+import math as math
+from aide_design.play import*
 
+temperature= np.arange(201)*u.degC
+temparray=temperature.to(u.degK)
+nu=pc.viscosity_kinematic(temparray)
+rpipe= 0.2*u.m
+diam= rpipe*2
+flow= 2*u.m**3/u.s
+
+Renumber= pc.re_pipe(flow,diam, nu)
+
+plt.plot(Renumber, temparray, 'o')
+plt.ylabel('Reynolds Number')
+plt.xlabel('Temperature (degrees Kelvins)')
+plt.savefig('./images/ReyondsFigure.png')
+plt.show()
+
+
+```
 
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
@@ -312,7 +339,7 @@ In this section you and your team can practice using Teletype together.
 
 You're so awesome and I love you! <3 -sidneylok
 
-
+hello sung min u r da gr8est n i<3u -Erica Marroquin
 
 
 2. Have you other team members create a portal for you to join. In their Markdown file, write them something encouraging, and sign your name.
