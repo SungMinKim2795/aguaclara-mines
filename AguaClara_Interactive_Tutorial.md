@@ -304,11 +304,11 @@ print(Stokes_Einstein(10,0.01))
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save your plot to your images folder in your personal repository, and display it below using `plt.show()` and an image insertion using a relative file path to the image.
 
-#pipe with radius= 0.2m
-#flow= 2m**3/s
-#how Re number changes as viscosity changes due to temperature changes from 0 to 200C
-#create plot of Re Number against Temp (K)
-#title, label x and y and axes grid
+####pipe with radius= 0.2m
+####flow= 2m**3/s
+####how Re number changes as viscosity changes due to temperature changes from 0 to 200C
+####3create plot of Re Number against Temp (K)
+####title, label x and y and axes grid
 ```python
 import numpy as np
 import math as math
